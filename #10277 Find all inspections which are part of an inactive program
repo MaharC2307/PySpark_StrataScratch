@@ -1,0 +1,10 @@
+# Import your libraries
+from pyspark.sql import SparkSession
+
+# Initialize SparkSession (if not already done)
+spark = SparkSession.builder.appName("Health Inspections").getOrCreate()
+
+df = los_angeles_restaurant_health_inspections
+
+inactive_df = df.filter(df['program_status'] == 'INACTIVE')
+inactive_df.show(truncate = False)
